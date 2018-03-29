@@ -7,7 +7,7 @@ const itinerary = (props) => {
 	return (
 		<div>
 			this is an itnerary
-			<Mapping loaded='false'/>
+			<Mapping loaded='false' />
 			<DayPlan />
 		</div>
 	);

@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import Map from './Map/Map';
 
 import classes from './Mapping.css';
 
-import Map from './Map/Map';
-
 class Mapping extends Component {
-
-	state = {
-
-	}
 
 	apiKey = 'AIzaSyBgrgWCYAK-yTM9EL563J40Oa_tCY7X-4o';
 
