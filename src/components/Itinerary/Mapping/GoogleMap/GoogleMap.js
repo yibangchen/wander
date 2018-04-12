@@ -1,80 +1,23 @@
-import React, { PropTypes as T, Component} from 'react';
-import ReactDOM from 'react-dom';
+import React, { Component } from 'react';
+import GoogleMapReact from 'google-map-react';
+// import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react'
 
-import cache from '../../../../../scripts/ScriptCache';
-import GoogleApi from '../../../../../scripts/GoogleApi';
+import classes from './GoogleMap.css';
 
-const defaultMapConfig = {}
+class Map extends Component {
 
-export const wrapper = (options) => (WrappedComponent) => {
-	const apiKey = Options.apiKey;
-	const libraries = options.libraries || ['places'];
-
-	class Wrapper extends Component {
-		constructor (props, contet) {
-			super(props, context);
-
-			this.state = {
-				loaded: false,
-				map: null,
-				google: null
-			}
-		}
-
-		componentDidMount() {
-			const refs = this.refs;
-			this.scriptCache.google.onLoad((err, tag) => {
-				const maps = window.google.maps;
-				const props = Object.assign({}, this.props, {
-					loaded: this.state.loaded
-				});
-
-				const mapRef = refs.map;
-
-		        const node = ReactDOM.findDOMNode(mapRef);
-		        let center = new maps.LatLng(this.props.lat, this.props.lng)
-
-		        let mapConfig = Object.assign({}, defaultMapConfig, {
-		          center, zoom: this.props.zoom
-		        })
-
-		        this.map = new maps.Map(node, mapConfig);
-
-		        this.setState({
-		          loaded: true,
-		          map: this.map,
-		          google: window.google
-		        })
-			});
-		}
-
-		componentWillMount() {
-			this.scriptCache = cache({
-				google: GoogleApi({
-					apiKey: apiKey,
-					libraries: libraries
-				})
-			});
-		}
-
-		render() {
-			const props = Object.assign({}, this.props, {
-				loaded: this.state.loaded,
-				map: this.state.map,
-				google: this.state.google,
-				mapComponent: this.refs.map
-			})
-
-			return (
-				<div>
-					<WrappedComponent {...props} />
-					<div ref='map' />
-				</div>
-			)
-		}
-	}
-
-	return Wrapper;
+  render() {
+    return (
+      // Important! Always set the container height explicitly
+      <div style={{ height: '80vh', width: '100%' }} >
+        <GoogleMapReact
+          bootstrapURLKeys={{ key: this.props.apiKey }}
+          defaultCenter={this.props.center}
+          defaultZoom={this.props.zoom}
+        />
+      </div>
+    );
+  }
 }
 
-export default wrapper;
+export default Map;

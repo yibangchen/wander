@@ -1,5 +1,12 @@
 export const cities = {
 	'san_francisco': {
+		'geo_location': {
+			center: {
+		      lat: 37.77,
+		      lng: -122.43
+		    },
+		    zoom: 12
+		},
 		'sites': [
 			'twin_peaks': {},
 			'alamo_square': {},

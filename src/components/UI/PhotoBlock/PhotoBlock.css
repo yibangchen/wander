@@ -1,0 +1,21 @@
+.PhotoBlock {
+	height: 75px;
+	width: 100%;
+}
+
+.Block {
+}
+
+.Photo {
+	height: 100%;
+	width: 100px;
+	display: inline-block;
+	background-color: red;
+}
+
+.Desc {
+	height: 100%;
+	width: 100%;
+	display: inline-block;
+	background-color: blue;
+}

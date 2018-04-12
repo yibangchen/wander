@@ -1,25 +1,24 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import Map from './Map/Map';
+
+import GoogleMap from './GoogleMap/GoogleMap';
+import { cities } from '../../../data';
+import { GOOGLE_MAP_API } from '../../../apiKeys';
 
 import classes from './Mapping.css';
 
 class Mapping extends Component {
 
-	apiKey = 'AIzaSyBgrgWCYAK-yTM9EL563J40Oa_tCY7X-4o';
+  render() {
 
-	render() {
-		if (!this.props.loaded) {
-			return <div className='Mapping'>Loading...</div>
-		}
-		return  (
-			<div className='Mapping'>
-				<Map google={ this.props.google }/>
-			</div>	
-		);
-	}
+  	const geoLoc = cities['san_francisco']['geo_location'];
+
+    return (
+      // Important! Always set the container height explicitly
+      <div className={classes.Mapping}>
+      	<GoogleMap apiKey={GOOGLE_MAP_API} center={geoLoc.center} zoom={geoLoc.zoom}/>
+      </div>
+    );
+  }
 }
-
-
 
 export default Mapping;
