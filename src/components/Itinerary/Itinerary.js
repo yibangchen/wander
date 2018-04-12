@@ -3,12 +3,13 @@ import React from 'react';
 import Mapping from './Mapping/Mapping';
 import DayPlan from './DayPlan/DayPlan';
 
+import { cities } from '../data.js';
+
 const itinerary = (props) => {
+
 	return (
 		<div>
-			this is an itnerary
-			<Mapping loaded='false' />
-			<DayPlan />
+			<DayPlan cards={ cities[props.cityName]} />
 		</div>
 	);
 }

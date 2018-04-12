@@ -1,7 +1,9 @@
 import React from 'react';
 
 const dayPlan = (props) => (
-	<div>Day Plan Section Placeholder</div>
+	<div>
+		<p>Day Plan Section Placeholder</p>
+	</div>
 );
 
 export default dayPlan;
